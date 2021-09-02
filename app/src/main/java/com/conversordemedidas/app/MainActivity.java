@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // Construindo os Spinners
         Spinner dynamicSpinner = (Spinner) findViewById(R.id.dynamic_spinner);
 
-        String[] items = new String[] { "Moeda", "Temperatura", "Distância" };
+        String[] items = new String[] { "Moeda", "Temperatura", "Comprimento" };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, items);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // Opções de tipo
         String[] moedas = new String[] { "Dólar", "Real", "Euro" };
         String[] temperaturas = new String[] { "Celsius", "Kelvin", "Fahrenheit" };
-        String[] distancias = new String[] { "Pés", "Metros", "Centímetros", "Polegadas", "Milhas", "Quilômetros" };
+        String[] distancias = new String[] { "Pés", "Metros", "Centímetros", "Polegadas" };
 
         ArrayAdapter<String> adapterMoedas = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, moedas);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         leftSpinner.setAdapter(adapterTemperaturas);
                         rightSpinner.setAdapter(adapterTemperaturas);
                         break;
-                    case "Distância":
+                    case "Comprimento":
                         leftSpinner.setAdapter(adapterDistancias);
                         rightSpinner.setAdapter(adapterDistancias);
                         break;
