@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Conversor de Medidas</string>
+    <string name="escolha_o_tipo_de_medida">Escolha o tipo de medida</string>
+    <string name="insira">Insira</string>
+    <string name="resultado">Resultado</string>
+    <string name="right">Right</string>
+    <string name="left">Left</string>
+    <string name="button">Button</string>
+    <string name="equals">=</string>
+    <string name="left_unit">Left unit</string>
+    <string name="right_unit">Right unit</string>
+    <string name="em">em</string>
+</resources>
