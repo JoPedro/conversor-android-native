@@ -16,8 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override public void run() {
                 mostrarMain();
             }
-        }, 2000);
-        mostrarMain();
+        }, 3000);
     }
 
     public void mostrarMain() {

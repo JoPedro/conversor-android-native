@@ -8,11 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.conversordemedidas.app.Converter;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DecimalFormat;
 
 
@@ -24,6 +30,7 @@ public class ResultadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resultado);
 
         Intent intent = getIntent();
+
         double leftValue = intent.getDoubleExtra(MainActivity.EXTRA_DOUBLE_LEFT_VALUE, 0.0);
         String leftUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_LEFT_UNIT);
         String rightUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_RIGHT_UNIT);
@@ -33,6 +40,7 @@ public class ResultadoActivity extends AppCompatActivity {
         TextView leftUnitShowText = (TextView) findViewById(R.id.left_unit_show);
         TextView rightUnitShowText = (TextView) findViewById(R.id.right_unit_show);
 
+        String tipoMedida = intent.getStringExtra(MainActivity.EXTRA_STRING_TIPO);
         double resultado = Converter.Conversao(leftValue, leftUnit, rightUnit);
         DecimalFormat df = new DecimalFormat(".00");
 

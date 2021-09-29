@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DOUBLE_LEFT_VALUE = "com.conversordemedidas.app.EXTRA_DOUBLE_LEFT_VALUE";
     public static final String EXTRA_STRING_LEFT_UNIT = "com.conversordemedidas.app.EXTRA_STRING_LEFT_UNIT";
     public static final String EXTRA_STRING_RIGHT_UNIT = "com.conversordemedidas.app.EXTRA_STRING_RIGHT_UNIT";
+    public static final String EXTRA_STRING_TIPO = "com.conversordemedidas.app.EXTRA_STRING_TIPO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,19 +122,25 @@ public class MainActivity extends AppCompatActivity {
         botaoResultado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pushResult(leftUnit[0], rightUnit[0]);
+                pushResult(leftUnit[0], rightUnit[0], tipoMedida[0]);
             }
         });
     }
 
-    public void pushResult(String leftUnit, String rightUnit) {
+    public void pushResult(String leftUnit, String rightUnit, String tipoMedida) {
         EditText leftValueText = (EditText) findViewById(R.id.left_value);
         double leftValue = Double.parseDouble(leftValueText.getText().toString());
 
-        Intent intent = new Intent(this, ResultadoActivity.class);
+        Intent intent;
+        if (tipoMedida == "Moeda")
+            intent = new Intent(this, MoedaActivity.class);
+        else
+            intent = new Intent(this, ResultadoActivity.class);
+
         intent.putExtra(EXTRA_DOUBLE_LEFT_VALUE, leftValue);
         intent.putExtra(EXTRA_STRING_LEFT_UNIT, leftUnit);
         intent.putExtra(EXTRA_STRING_RIGHT_UNIT, rightUnit);
+        intent.putExtra(EXTRA_STRING_TIPO, tipoMedida);
 
         startActivity(intent);
     }
