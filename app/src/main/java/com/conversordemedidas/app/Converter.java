@@ -53,7 +53,7 @@ public class Converter {
                 break;
         }
 
-        // SWITCH Moeda
+        // SWITCH Moeda SEM API
         switch(leftUnit) {
             case "Dólar":
                 switch (rightUnit) {

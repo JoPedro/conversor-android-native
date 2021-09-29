@@ -2,6 +2,7 @@ package com.conversordemedidas.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Spinner rightSpinner = (Spinner) findViewById(R.id.right_spinner);
 
         // Opções de tipo
-        String[] moedas = new String[] { "Dólar", "Real", "Euro" };
+        String[] moedas = new String[] { "USD", "BRL", "EUR" };
         String[] temperaturas = new String[] { "Celsius", "Kelvin", "Fahrenheit" };
         String[] distancias = new String[] { "Pés", "Metros", "Centímetros", "Polegadas" };
 
@@ -122,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
         botaoResultado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pushResult(leftUnit[0], rightUnit[0], tipoMedida[0]);
+                EditText leftValueText = (EditText) findViewById(R.id.left_value);
+                String leftValueString = leftValueText.getText().toString();
+                if (!TextUtils.isEmpty(leftValueString) && leftUnit[0] != rightUnit[0])
+                    pushResult(leftUnit[0], rightUnit[0], tipoMedida[0]);
             }
         });
     }

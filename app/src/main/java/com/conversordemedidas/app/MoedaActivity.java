@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 public class MoedaActivity extends AppCompatActivity {
 
@@ -28,8 +29,6 @@ public class MoedaActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         double leftValue = intent.getDoubleExtra(MainActivity.EXTRA_DOUBLE_LEFT_VALUE, 0.0);
-        String leftUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_LEFT_UNIT);
-        String rightUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_RIGHT_UNIT);
 
         TextView leftValueShowText = (TextView) findViewById(R.id.left_value_show);
         TextView rightValueShowText = (TextView) findViewById(R.id.right_value_show);
@@ -37,11 +36,15 @@ public class MoedaActivity extends AppCompatActivity {
         TextView rightUnitShowText = (TextView) findViewById(R.id.right_unit_show);
 
         EditText textViewTeste = (EditText) findViewById(R.id.editTextTextMultiLine);
-        DecimalFormat df = new DecimalFormat(".00");
+        textViewTeste.setEnabled(false);
+
+        String leftUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_LEFT_UNIT);
+        String rightUnit = intent.getStringExtra(MainActivity.EXTRA_STRING_RIGHT_UNIT);
 
         new Thread(new Runnable() {
             StringBuffer buffer = new StringBuffer();
             JSONObject json;
+            DecimalFormat df = new DecimalFormat(".00");
 
             @Override
             public void run() {
@@ -49,9 +52,12 @@ public class MoedaActivity extends AppCompatActivity {
                 BufferedReader reader;
                 String linha = "";
 
+                String urlString = "https://api.fastforex.io/fetch-one?from=" + leftUnit + "&to=" + rightUnit + "&api_key=9be3b13308-aea8f3ba2e-r06lvu";
+
                 try {
                     // API: FastFOREX.io
-                    URL url = new URL("https://api.fastforex.io/fetch-one?from=USD&to=BRL&api_key=9be3b13308-aea8f3ba2e-r06lvu");
+                    URL url = new URL(urlString);
+
                     huc = (HttpURLConnection) url.openConnection();
                     huc.setRequestProperty("Accept", "application/json");
                     huc.setRequestMethod("GET");
@@ -78,13 +84,10 @@ public class MoedaActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String leftUnit = null;
-                        String rightUnit = null;
                         double conversionRate = 0;
 
                         try {
-                            leftUnit = json.getString("base");
-                            conversionRate = Double.parseDouble(json.getJSONObject("result").getString("BRL"));
+                            conversionRate = Double.parseDouble(json.getJSONObject("result").getString(rightUnit));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
