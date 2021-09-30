@@ -125,7 +125,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText leftValueText = (EditText) findViewById(R.id.left_value);
                 String leftValueString = leftValueText.getText().toString();
-                if (!TextUtils.isEmpty(leftValueString) && leftUnit[0] != rightUnit[0])
+                if (TextUtils.isEmpty(leftValueString))
+                    Toast.makeText(getApplicationContext(),"Adicione um valor para converter.",Toast.LENGTH_SHORT).show();
+                else if (leftUnit[0] == rightUnit[0])
+                    Toast.makeText(getApplicationContext(),"Selecione medidas diferentes.",Toast.LENGTH_SHORT).show();
+                else
                     pushResult(leftUnit[0], rightUnit[0], tipoMedida[0]);
             }
         });

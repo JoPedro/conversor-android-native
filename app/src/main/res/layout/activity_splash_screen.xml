@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="32dp"
-        android:text="Pés, Polegadas: Sistema de medição Imperial"
+        android:text="@string/p_s_polegadas_sistema_de_medi_o_imperial"
         android:textColor="#fff"
         android:textSize="16sp" />
 
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="32dp"
-        android:text="Cotação do dólar, real e euro: 02/09/2021"
+        android:text="@string/cota_o_do_d_lar_real_e_euro_ao_vivo_fastforex_io"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

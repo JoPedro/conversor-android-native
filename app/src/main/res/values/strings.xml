@@ -20,4 +20,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="cota_o_do_d_lar_real_e_euro_ao_vivo_fastforex_io">Cotação do dólar, real e euro: AO VIVO (fastFOREX.io)</string>
+    <string name="p_s_polegadas_sistema_de_medi_o_imperial">Pés, Polegadas: Sistema de medição Imperial</string>
 </resources>
